@@ -1,0 +1,41 @@
+
+<% if user_signed_in?%>
+
+
+  <h1>Friend List</h1>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Socials</th>
+        <th scope="col">User Id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @friends_lists.each_with_index do |friends_list, index| %>
+        <% if friends_list.user == current_user %>
+        <tr>
+          <td>
+          <%= link_to friends_list.first_name + ' ' + friends_list.last_name, friends_list %>
+          </td>
+          <td><%= friends_list.email %></td>
+          <td><%= friends_list.phone %></td>
+          <td><%= friends_list.socials %></td>
+          <td><%= friends_list.user_id %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "New friend", new_friends_list_path, class: "btn btn-secondary" %>
+
+  <% else %>
+
+  <h1>Hello!</h1>
+  Log in to see your friends
+
+  <% end %>

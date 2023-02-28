@@ -1,0 +1,46 @@
+<%= form_with(model: friends_list) do |form| %>
+  <% if friends_list.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(friends_list.errors.count, "error") %> prohibited this friends_list from being saved:</h2>
+
+      <ul>
+        <% friends_list.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+  </div>
+
+  <div>
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email, class: "form-control", placeholder: "example@email.com" %>
+  </div>
+
+  <div>
+    <%= form.label :phone, style: "display: block" %>
+    <%= form.text_field :phone, class: "form-control", placeholder: "111-222-333" %>
+  </div>
+
+  <div>
+    <%= form.label :socials, style: "display: block" %>
+    <%= form.text_field :socials, class: "form-control", placeholder: "@myInstagram" %>
+  </div>
+
+  <div>
+    <%= form.number_field :user_id, id: :friends_list_user_id, class: "form-control", value: current_user.id, type: :hidden %>
+  </div>
+<p></p>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

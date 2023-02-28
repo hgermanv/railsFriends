@@ -1,0 +1,15 @@
+<div class="jumbotron">
+  <h1 class="display-4"><%= @friends_list.first_name %> <%= @friends_list.last_name %></h1>
+  <hr class="my-4">
+  <p class = "lead">
+    <%= @friends_list.email %> |
+    <%= @friends_list.phone %> |
+    <%= @friends_list.socials %>
+  </p>
+  <div class="btn-group" role="group" aria-label="Friend actions">
+  <%= link_to "Edit this Contact", edit_friends_list_path(@friends_list), class: "btn btn-secondary mr-2" %>
+  <%= link_to "Back to Friend List", friends_lists_path, class: "btn btn-secondary mr-2" %>
+  <%= button_to "Destroy this Contact", @friends_list, method: :delete, class: "btn btn-outline-danger" %>
+</div>
+
+</div>
